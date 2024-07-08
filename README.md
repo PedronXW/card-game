@@ -3,6 +3,9 @@
 ## Descrição
 
 Aplicação desenvolvida em NodeJS, com o framework NextJS, que tem por objetivo simular um jogo de cartas com a temática de carros. Com ela duas pessoas podem jogar, a partir do mesmo dispositivo, e ver o histórico de partidas.
+Os jogadores são identificados por `Player 1` e `Player 2` e por cores `Blue` e `Red` respectivamente e são utilizadas no histórico e na indicação do vencedor da partida e do round.
+
+Dentro do histórico, partidas que acabaram com o Player 1 vencedor tem a borda Azul, partidas que acabaram com o Player 2 vencedor tem borda Vermelha e as que ainda não acabaram estão com borda branca.
 
 ## Descrição Técnica
 - Para armazenamento dos dados utilizei o ORM Prisma conectado a um banco de dados Postgres.
