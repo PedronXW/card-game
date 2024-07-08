@@ -80,7 +80,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6 gap-10">
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 gap-10">
       <NotificationProvider>
         <h1 className="text-black font-bold text-4xl">Games History</h1>
         <ul className="grid grid-cols-1 w-full gap-4 max-w-96" ref={listRef}>
