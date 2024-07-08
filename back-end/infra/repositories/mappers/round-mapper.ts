@@ -55,7 +55,8 @@ export const attributeConversorFromPrismaToDomain = (attribute: string) => {
 }
 
 export class RoundMapper {
-  static toDomain(raw) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  static toDomain(raw: any) {
     return Round.create(
       {
         blueCardsBeforeRound: raw.blueCardsBeforeRound,

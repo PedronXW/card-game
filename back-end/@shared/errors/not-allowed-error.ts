@@ -1,4 +1,4 @@
-import { ServiceError } from '@/@shared/errors/service-error'
+import { ServiceError } from './service-error'
 
 export class NotAllowedError extends Error implements ServiceError {
   constructor() {

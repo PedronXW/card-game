@@ -3,7 +3,8 @@ import { EntityId } from '../../../@shared/entities/entity-id'
 import { Game, Side } from '../../../domain/entities/game'
 
 export class GameMapper {
-  static toDomain(raw) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  static toDomain(raw: any) {
     return Game.create(
       {
         rounds: raw.rounds,

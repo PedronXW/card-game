@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Car, RoundContext } from '@/contexts/RoundContext'
 import { useContext, useEffect, useState } from 'react'
 import { cards } from '../../lib/cards'

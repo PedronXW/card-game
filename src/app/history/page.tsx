@@ -20,8 +20,10 @@ export default function Home() {
 
   const ref = useRef(null)
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const listRef = useRef<any>(null)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getNextPage = async () => {
     if (games?.length === gamesCount) return
     fetchGames()
@@ -68,7 +70,6 @@ export default function Home() {
       setGames((prev) => prev.concat(data.games))
       setGamesCount(data.totalGamesCount)
       setPage((prev) => prev + 1)
-    } else {
     }
   }
 
