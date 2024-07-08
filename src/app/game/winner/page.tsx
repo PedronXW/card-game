@@ -18,7 +18,7 @@ export default function WinnerPage() {
   return (
     <Suspense>
       <main
-        className={`h-screen w-full flex-col items-center justify-center gap-10 flex`}
+        className={`h-screen w-full flex-col items-center justify-center gap-10 flex p-6`}
       >
         <h1 className="text-black font-bold text-2xl text-center">
           Game Winner:

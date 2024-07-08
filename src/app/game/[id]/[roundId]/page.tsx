@@ -23,16 +23,16 @@ export default function Round() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <main className="flex min-h-screen flex-col items-center p-6">
       {waiting ? (
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex flex-col items-center gap-10 min-h-screen justify-center">
           <h1 className="text-black font-bold text-4xl">
             Loading Your Cards...
           </h1>
           <Loading />
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex flex-col items-center gap-10 w-full">
           <h1 className="text-black font-bold text-4xl">Select a Card</h1>
           {round ? (
             round?.blueCardPlayed === null ? (
@@ -44,7 +44,7 @@ export default function Round() {
 
           <Button action={handleSelectACard} text="CONFIRM SELECTION" />
 
-          <div className="w-96 ">
+          <div className="w-96 p-6 sm:p-0">
             {round ? (
               <CarList
                 list={

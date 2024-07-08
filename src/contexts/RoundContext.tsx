@@ -149,11 +149,11 @@ export default function RoundProvider({ children }: RoundContextInterface) {
           cards[selectedBlueCard!][round.selectedAttribute]
 
         if (round.blueCardsBeforeRound.length === 1 && winner) {
-          return router.push(`/game/winner?winner=Player1`)
+          return router.push(`/game/winner?winner=Player 2`)
         }
 
         if (round.redCardsBeforeRound.length === 1 && !winner) {
-          return router.push(`/game/winner?winner=Player2`)
+          return router.push(`/game/winner?winner=Player 1`)
         }
 
         return router.push(

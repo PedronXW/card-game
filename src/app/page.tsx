@@ -24,10 +24,10 @@ export default function Home() {
     const data = await response.json()
 
     if (response.status === 201) {
-      router.push('game/' + data.game.id)
+      router.push('/game/' + data.game.id)
+    } else {
+      setWaiting(false)
     }
-
-    setWaiting(false)
   }
 
   const goToHistory = () => {
@@ -35,7 +35,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-10">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-10 p-6">
       <h1 className="text-black font-bold text-4xl">Car D Game</h1>
       <Button waiting={waiting} text="START" action={startGameAction} />
       <Button action={goToHistory} text="GAMES HISTORY" />
