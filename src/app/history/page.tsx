@@ -2,6 +2,8 @@
 
 import GameCell from '@/components/GameCell'
 import { Loading } from '@/components/Loading'
+import NotificationProvider from '@/providers/NotificationProvider'
+import { enqueueSnackbar } from 'notistack'
 import { useEffect, useRef, useState } from 'react'
 
 export type Game = {
@@ -70,26 +72,32 @@ export default function Home() {
       setGames((prev) => prev.concat(data.games))
       setGamesCount(data.totalGamesCount)
       setPage((prev) => prev + 1)
+    } else {
+      enqueueSnackbar('Search failed, retry soon', {
+        variant: 'error',
+      })
     }
   }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 gap-10">
-      <h1 className="text-black font-bold text-4xl">Games History</h1>
-      <ul className="grid grid-cols-1 w-full gap-4 max-w-96" ref={listRef}>
-        {games ? (
-          games.map((game) => <GameCell game={game} key={game.id} />)
-        ) : (
-          <div>Erro ao carregar dados</div>
-        )}
-        {games?.length === gamesCount ? (
-          <div></div>
-        ) : (
-          <div ref={ref}>
-            <Loading />
-          </div>
-        )}
-      </ul>
+      <NotificationProvider>
+        <h1 className="text-black font-bold text-4xl">Games History</h1>
+        <ul className="grid grid-cols-1 w-full gap-4 max-w-96" ref={listRef}>
+          {games ? (
+            games.map((game) => <GameCell game={game} key={game.id} />)
+          ) : (
+            <div>Erro ao carregar dados</div>
+          )}
+          {games?.length === gamesCount ? (
+            <div></div>
+          ) : (
+            <div ref={ref}>
+              <Loading />
+            </div>
+          )}
+        </ul>
+      </NotificationProvider>
     </main>
   )
 }

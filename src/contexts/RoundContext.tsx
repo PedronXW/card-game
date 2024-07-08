@@ -2,6 +2,7 @@
 'use client'
 
 import { useParams, useRouter } from 'next/navigation'
+import { enqueueSnackbar } from 'notistack'
 import { ReactNode, createContext, useEffect, useState } from 'react'
 import { cards } from '../../lib/cards'
 
@@ -92,6 +93,10 @@ export default function RoundProvider({ children }: RoundContextInterface) {
       }
 
       setRound(data.round)
+    } else {
+      enqueueSnackbar('Rounds search failed, retry soon', {
+        variant: 'error',
+      })
     }
 
     setWaiting(false)
@@ -160,6 +165,10 @@ export default function RoundProvider({ children }: RoundContextInterface) {
           `/game/${id}?last-winner=${!winner ? 'Player 1 Win' : 'Player 2 Win'}`,
         )
       }
+    } else {
+      enqueueSnackbar('Select a card failed, retry soon', {
+        variant: 'error',
+      })
     }
 
     setWaiting(false)

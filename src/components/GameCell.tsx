@@ -2,6 +2,7 @@
 
 import { Game } from '@/app/history/page'
 import { Round } from '@/contexts/RoundContext'
+import { enqueueSnackbar } from 'notistack'
 import { useEffect, useState } from 'react'
 import { Loading } from './Loading'
 import RoundCell from './RoundCell'
@@ -44,10 +45,13 @@ export default function GameCell({ game }: GameCellProps) {
 
     const data = await response.json()
     if (response.status === 200) {
-      console.log(data)
       setRounds((prev) => prev.concat(data.rounds))
       setRoundCount(data.totalRoundsCount)
       setPage((prev) => prev + 1)
+    } else {
+      enqueueSnackbar('Rounds search failed, retry soon', {
+        variant: 'error',
+      })
     }
 
     setWaiting(false)

@@ -2,7 +2,9 @@
 
 import { Button } from '@/components/Button'
 import { Loading } from '@/components/Loading'
+import NotificationProvider from '@/providers/NotificationProvider'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
+import { enqueueSnackbar } from 'notistack'
 import { useState } from 'react'
 
 export default function Game() {
@@ -33,6 +35,10 @@ export default function Game() {
 
     if (response.status === 201) {
       router.push(`/game/${id}/${data.round.id}`)
+    } else {
+      enqueueSnackbar('Round Creation failed, retry soon', {
+        variant: 'error',
+      })
     }
 
     setWaiting(false)
@@ -42,48 +48,50 @@ export default function Game() {
     <main
       className={`h-screen w-full flex-col items-center justify-center gap-10 flex`}
     >
-      {lastRoundWinner ? (
-        <div className="flex justify-center gap-2 w-80 flex-col items-center">
+      <NotificationProvider>
+        {lastRoundWinner ? (
+          <div className="flex justify-center gap-2 w-80 flex-col items-center">
+            <h1 className="text-black font-bold text-2xl text-center">
+              Last Round Result:
+            </h1>
+            <strong className="text-black font-bold text-4xl text-center">
+              {lastRoundWinner}
+            </strong>
+          </div>
+        ) : null}
+
+        <div className="flex justify-center gap-10 w-80 flex-col">
           <h1 className="text-black font-bold text-2xl text-center">
-            Last Round Result:
+            {waiting ? 'Loading...' : 'Select the next round attribute'}
           </h1>
-          <strong className="text-black font-bold text-4xl text-center">
-            {lastRoundWinner}
-          </strong>
+
+          <div className="min-h-16">{waiting ? <Loading /> : null}</div>
+
+          <Button
+            text="Max Speed"
+            able={!waiting}
+            action={() => {
+              selectAttribute('max_speed')
+            }}
+          />
+
+          <Button
+            text="Power"
+            able={!waiting}
+            action={() => {
+              selectAttribute('power')
+            }}
+          />
+
+          <Button
+            text="Torque"
+            able={!waiting}
+            action={() => {
+              selectAttribute('torque')
+            }}
+          />
         </div>
-      ) : null}
-
-      <div className="flex justify-center gap-10 w-80 flex-col">
-        <h1 className="text-black font-bold text-2xl text-center">
-          {waiting ? 'Loading...' : 'Select the next round attribute'}
-        </h1>
-
-        <div className="min-h-16">{waiting ? <Loading /> : null}</div>
-
-        <Button
-          text="Max Speed"
-          able={!waiting}
-          action={() => {
-            selectAttribute('max_speed')
-          }}
-        />
-
-        <Button
-          text="Power"
-          able={!waiting}
-          action={() => {
-            selectAttribute('power')
-          }}
-        />
-
-        <Button
-          text="Torque"
-          able={!waiting}
-          action={() => {
-            selectAttribute('torque')
-          }}
-        />
-      </div>
+      </NotificationProvider>
     </main>
   )
 }
