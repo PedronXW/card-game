@@ -35,6 +35,7 @@ export class CreateRoundService {
 
     const lastRound = (
       await this.roundRepository.fetchRoundsByGame(
+        // Fetch rounds by game always return ordered by dec createdAt property
         selectedGame.id.getValue(),
         1,
         1,
@@ -50,8 +51,6 @@ export class CreateRoundService {
     }
 
     if (lastRound.blueCardPlayed === null || lastRound.redCardPlayed === null) {
-      // Last round is not finished
-
       return left(new LastRoundNonFinishedError())
     }
 

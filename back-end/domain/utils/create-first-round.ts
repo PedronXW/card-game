@@ -12,6 +12,7 @@ export const firstRoundGenerator = (attribute: string, game: string) => {
   const redCardGroup: string[] = []
 
   cards.forEach((card, index) => {
+    // distribute cards to sides
     if (generateRandomListItems.includes(index)) {
       blueCardGroup.push(card.name)
     } else {

@@ -60,6 +60,7 @@ export class SelectACardService {
     )
 
     if (updatedRound.blueCardPlayed && updatedRound.redCardPlayed) {
+      // Round is finished
       const selectedRedCard = cards.find(
         (card) => card.name === updatedRound.redCardPlayed,
       )
@@ -79,6 +80,7 @@ export class SelectACardService {
           : Side.RED
 
       if (round.blueCardsBeforeRound.length === 1 && winner === Side.RED) {
+        // Game is finished with the red side like winner
         await this.selectAWinner.execute({
           winner: 'RED',
           game: round.game.getValue(),
@@ -86,6 +88,7 @@ export class SelectACardService {
       }
 
       if (round.redCardsBeforeRound.length === 1 && winner === Side.BLUE) {
+        // Game is finished with the blue side like winner
         await this.selectAWinner.execute({
           winner: 'BLUE',
           game: round.game.getValue(),

@@ -83,7 +83,7 @@ export default function GameCell({ game }: GameCellProps) {
       {rounds ? (
         rounds.map((round) => <RoundCell round={round} key={round.id} />)
       ) : (
-        <div>Erro ao carregar dados</div>
+        <div>Error to render</div>
       )}
 
       <button

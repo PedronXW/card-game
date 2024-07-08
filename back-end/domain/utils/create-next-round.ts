@@ -55,6 +55,7 @@ export const nextRoundGenerator = (
   let redCards
 
   if (winner === Side.BLUE) {
+    // Set cards after a round
     blueCards = [...lastRound.blueCardsBeforeRound, selectedRedCard!.name]
     lastRound.redCardsBeforeRound.splice(redCardIndex, 1)
     redCards = lastRound.redCardsBeforeRound

@@ -14,6 +14,7 @@ export default function CarList({ list }: CarListProps) {
     setCompletedCards([])
 
     cards.forEach((card) => {
+      // Get completed cards to send to her cell
       if (list.includes(card.name)) {
         setCompletedCards((previousState) => {
           return [...previousState, card]

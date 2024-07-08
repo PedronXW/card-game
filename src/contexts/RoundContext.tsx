@@ -27,7 +27,7 @@ export type Round = {
   updatedAt: Date | undefined
 }
 
-interface RoundContext {
+type RoundContext = {
   round: Round | undefined
   selectACard: (cardNumber: number) => void
   fetchRound: () => void
@@ -38,7 +38,7 @@ interface RoundContext {
   waiting: boolean
 }
 
-interface RoundContextInterface {
+type RoundContextInterface = {
   children: ReactNode
 }
 
@@ -134,14 +134,6 @@ export default function RoundProvider({ children }: RoundContextInterface) {
       const round: Round = data.round
 
       if (round.redCardPlayed !== null && round.blueCardPlayed !== null) {
-        console.log(
-          cards[selectedRedCard!][round.selectedAttribute],
-          cards[selectedBlueCard!][round.selectedAttribute],
-          round,
-          selectedBlueCard,
-          selectedRedCard,
-        )
-
         if (
           cards[selectedRedCard!][round.selectedAttribute] ===
           cards[selectedBlueCard!][round.selectedAttribute]

@@ -42,7 +42,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-10 p-6">
       <NotificationProvider>
-        <h1 className="text-black font-bold text-4xl">Car D Game</h1>
+        <h1 className="text-black font-bold text-4xl text-center">
+          Car D Game
+        </h1>
         <Button waiting={waiting} text="START" action={startGameAction} />
         <Button action={goToHistory} text="GAMES HISTORY" />
         <Image
