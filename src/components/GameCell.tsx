@@ -63,7 +63,7 @@ export default function GameCell({ game }: GameCellProps) {
 
   return (
     <li
-      className={`drop-shadow-xl bg-white w-full text-center rounded-lg max-w-96 border-4 p-6 pb-14 ${game.winner === 'RED' ? 'border-red_base_color' : 'border-blue_base_color'}`}
+      className={`drop-shadow-xl bg-white w-full text-center rounded-lg max-w-96 border-4 p-6 pb-14 ${game.winner === 'RED' ? 'border-red_base_color' : ''} ${game.winner === 'BLUE' ? 'border-blue_base_color' : ''}`}
     >
       <header className="flex flex-col justify-between ">
         <h1 className="text-black font-bold text-xl text-start">
