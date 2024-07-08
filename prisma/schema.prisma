@@ -7,3 +7,34 @@ datasource db {
   url       = env("POSTGRES_PRISMA_URL")
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
+
+enum WinnerSide {
+  BLUE
+  RED
+}
+
+enum Attributes {
+  MAX_SPEED
+  POWER
+  TORQUE
+}
+
+model Game {
+  id        String      @id @default(uuid())
+  winner    WinnerSide?
+  rounds    Round[]
+  createdAt DateTime    @default(now())
+}
+
+model Round {
+  id                   String      @id @default(uuid())
+  redCardsBeforeRound  String[]
+  blueCardsBeforeRound String[]
+  redCardPlayed        String?
+  blueCardPlayed       String?
+  selectedAttribute    Attributes?
+  game                 Game        @relation(fields: [gameId], references: [id])
+  gameId               String
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime?   @updatedAt
+}
