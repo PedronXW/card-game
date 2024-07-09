@@ -29,7 +29,7 @@ export default function RoundCell({ round }: RoundCellProps) {
 
   const handleGetWinner = (): string => {
     if (!fullBlueCardPlayed || !fullRedCardPlayed) {
-      return 'erro'
+      return 'Round not finished'
     }
 
     if (

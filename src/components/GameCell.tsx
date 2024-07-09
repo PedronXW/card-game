@@ -81,7 +81,13 @@ export default function GameCell({ game }: GameCellProps) {
       />
 
       {rounds ? (
-        rounds.map((round) => <RoundCell round={round} key={round.id} />)
+        rounds.map((round) => {
+          if (round.blueCardPlayed && round.redCardPlayed) {
+            return <RoundCell round={round} key={round.id} />
+          }
+
+          return <div key={round.id}></div>
+        })
       ) : (
         <div>Error to render</div>
       )}
