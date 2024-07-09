@@ -19,7 +19,7 @@ Dentro do histórico, partidas que acabaram com o Player 1 vencedor tem a borda 
 
 Para executar a aplicação os seguintes comandos são disponibilizados:
 
-### É necessário fazer a instalação de todas as dependencias antes de executar a aplicação, pode ser feito utilizando o comando `npm i`
+### É necessário fazer a instalação de todas as dependencias antes de executar a aplicação, pode ser feito utilizando o comando `npm i` e adicionar as variáveis de ambiente em um arquivo `.env`
 
 ```bash
 npm run dev
