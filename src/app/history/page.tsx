@@ -87,10 +87,14 @@ export default function Home() {
           {games ? (
             games.map((game) => <GameCell game={game} key={game.id} />)
           ) : (
-            <div>Erro ao carregar dados</div>
+            <h1 className="text-black font-bold text-2xl text-center w-full">
+              Erro ao carregar dados
+            </h1>
           )}
           {games?.length === gamesCount ? (
-            <div></div>
+            <h1 className="text-black font-medium text-xl text-center w-full">
+              No games available in history
+            </h1>
           ) : (
             <div ref={ref}>
               <Loading />

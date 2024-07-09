@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+
+  card-game:
+    build: .
+    container_name: card-game
+    restart: always
+    entrypoint: sleep infinity
+    ports: 
+      - 3000:3000
+    environment:
+      POSTGRES_URL: postgres://docker:docker@pg:5432/pg?TrustServerCertificate=true
+      POSTGRES_PRISMA_URL: postgres://docker:docker@pg:5432/pg?TrustServerCertificate=true
+      POSTGRES_URL_NO_SSL: postgres://docker:docker@pg:5432/pg?TrustServerCertificate=true
+      POSTGRES_URL_NON_POOLING: postgres://docker:docker@pg:5432/pg?TrustServerCertificate=true
+      POSTGRES_USER: docker
+      POSTGRES_HOST: pg
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DATABASE: pg
+    volumes:
+      - .:/app
+
+
+  pg:
+    image: bitnami/postgresql:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=pg
